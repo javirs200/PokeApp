@@ -1,0 +1,9 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
+%header-basic{
+    display: flex;
+    max-height: 12vh;
+    margin:0px;
+    align-items: center;
+}
