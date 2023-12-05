@@ -1,18 +1,61 @@
-import React from "react";
+import React,{useState} from "react";
+import axios,{ AxiosError } from "axios"
 
-const Search = ({handleSubmit}) => {
+const Search = ({ addPokemon,clearPokemons }) => {
+
+  const [pokemon,setPokemon] = useState('')
+
+  const searchPokemon = async () => {
+    if (pokemon.length > 0) {
+      try {
+        // console.log('lamada api con pokemon ', pokemon);
+        const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)//trows axios error if pokemon not exist  , beacuse endpoint not exist
+        if (res.data) {
+          const pokemonObj = { name: res.data.name, id: res.data.id, url: res.data.sprites.other['official-artwork'].front_default }
+          addPokemon(pokemonObj)
+        }
+      } catch (error) {
+        if(error instanceof AxiosError)
+          //manejar excepcion mostrar panel o algo
+          console.log('pokemon no existente',error);
+        else
+          console.log('error', error);
+      }
+    } else {
+      console.log('nombre no introducido');
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // desencadeno llamada a api
+    searchPokemon(pokemon)
+
+    //clear input and state
+    e.target.poke.value = ''
+    setPokemon('')    
+  }
+
+  const handleClick = (e) => {
+      clearPokemons()
+  }
+
+  const handleChange = (e) => {
+    setPokemon(e.target.value)
+  }
 
   return (
     <>
-      <h2>Busca Ciudad</h2>
-      <br/>
+      <h2>Busca Pokemon</h2>
+      <br />
       <form onSubmit={handleSubmit}>
-        <label htmlFor='poke'>Nombre de la Pokemon :  </label>
-        <input type="text" name="poke" id="poke" placeholder='Pokemon Name' />
-        <br/>
-        <br/>
+        <label htmlFor='poke'>Nombre o numero del Pokemon :  </label>
+        <input type="text" name="poke" id="poke" placeholder='Pokemon Name' onChange={handleChange} />
+        <br />
+        <br />
         <button type="submit">Buscar</button>
       </form>
+      <button onClick={handleClick} >Despejar</button>
     </>
   );
 };

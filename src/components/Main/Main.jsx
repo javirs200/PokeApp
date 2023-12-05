@@ -5,25 +5,20 @@ import ListaPokemon from "./ListaPokemon";
 
 const Main = () => {
 
-    const [pokemon, setPokemon] = useState('')
+  const [Pokemons,setPokemons] = useState([])
 
-    const handleSubmit = (e) => {
+  const addPokemon = (pokemon)=>{
+    setPokemons(Pokemons.concat(pokemon))
+  }
 
-        e.preventDefault();
-
-        let campo = e.target.poke.value
-
-        setPokemon(campo)
-
-        // clear imput
-        e.target.poke.value = ''
-
-    }
+  const clearPokemons = ()=>{
+    setPokemons([])
+  }
 
   return (<>
-    <Search handleSubmit={handleSubmit}/>
+    <Search addPokemon={addPokemon} clearPokemons={clearPokemons}/>
     <br />
-    <ListaPokemon pokemon={pokemon}/>
+    <ListaPokemon Pokemons={Pokemons}/>
     </>)
 };
 
