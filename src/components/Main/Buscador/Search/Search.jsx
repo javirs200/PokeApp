@@ -1,29 +1,30 @@
-import React,{useState} from "react";
-import axios,{ AxiosError } from "axios"
+import React, { useState,useEffect} from "react";
+import axios, { AxiosError } from "axios"
 
-const Search = ({ addPokemon,clearPokemons }) => {
+const Search = ({ addPokemon, clearPokemons }) => {
 
-  const [pokemon,setPokemon] = useState('')
+  const [pokemon, setPokemon] = useState('')
 
   const searchPokemon = async () => {
-    if (pokemon.length > 0) {
+    if (pokemon.length > 0) { // si esta vacio
       try {
         // console.log('lamada api con pokemon ', pokemon);
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)//trows axios error if pokemon not exist  , beacuse endpoint not exist
         if (res.data) {
-          //console.log(res.data);
-          const pokemonObj = { 
-            name: res.data.name, 
-            id: res.data.id, 
-            url:`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${res.data.id}.gif`,
-            types : res.data.types
+          //console.log(res.data)
+          const pokemonObj = {
+            name: res.data.name,
+            id: res.data.id,
+            //cdn pokemon iconos animados 
+            url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${res.data.id}.gif`,
+            types: res.data.types
           }
           addPokemon(pokemonObj)
         }
       } catch (error) {
-        if(error instanceof AxiosError)
+        if (error instanceof AxiosError)
           //manejar excepcion mostrar panel o algo
-          console.log('pokemon no existente',error);
+          console.log('pokemon no existente', error);
         else
           console.log('error', error);
       }
@@ -39,16 +40,27 @@ const Search = ({ addPokemon,clearPokemons }) => {
 
     //clear input and state
     e.target.poke.value = ''
-    setPokemon('')    
+    setPokemon('')
   }
 
   const handleClick = (e) => {
-      clearPokemons()
+    clearPokemons()
   }
 
   const handleChange = (e) => {
     setPokemon(e.target.value)
   }
+
+  useEffect(() => {
+    console.log('set counter 3s');
+    //debounce buscar tras 3 seg
+    const debounce = setTimeout(() => {
+      console.log('trigger search');
+      searchPokemon()
+      document.getElementById('poke').value=''
+    }, 3000)
+    return () => clearTimeout(debounce)
+  }, [pokemon])
 
   return (
     <>

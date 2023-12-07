@@ -1,5 +1,4 @@
 import React from "react";
-import './PokeCard.css'
 
 const PokeCard = ({ pokemon }) => {
 
@@ -14,7 +13,10 @@ const PokeCard = ({ pokemon }) => {
       {pokemon ? <div className="pokemonCard">
         <h2>{pokemon.name}</h2> <h3>{_pad(pokemon.id)}</h3>
         <img src={pokemon.url} alt={pokemon.name} />
-        <p>{pokemon.types.map(tipo => <span key={tipo.type.name}> {tipo.type.name.toUpperCase()}</span>)}</p>
+        <p>{pokemon.types.map(el => 
+        <span className={`type ${el.type.name}`} key={el.type.name}></span>
+        )}
+        </p>
       </div> : ''}
     </>
 

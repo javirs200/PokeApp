@@ -1,12 +1,11 @@
 import React from "react";
-import pokeball from '/pokeball.svg'
+import Nav from "./Nav";
 
 const Header = () => {
   return (
     <>
-      {/* <img src={pokeball} alt="pokeball" /> */}
       <header>
-        Header
+        <Nav/>
       </header>
     </>
   );

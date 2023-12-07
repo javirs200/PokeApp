@@ -1,6 +1,11 @@
-@import './components/Footer';
-@import './components/Main';
 @import './components/Header';
+@import './components/Nav';
+@import './components/Main';
+@import './components/Buscador';
 @import './components/Search';
+@import './components/ListaPokemon';
+@import './components/PokeCard';
+@import './components/Footer';
+
 
 @import './views/App.scss';
