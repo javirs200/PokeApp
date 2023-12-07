@@ -11,8 +11,13 @@ const Search = ({ addPokemon,clearPokemons }) => {
         // console.log('lamada api con pokemon ', pokemon);
         const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemon}`)//trows axios error if pokemon not exist  , beacuse endpoint not exist
         if (res.data) {
-          // console.log(res.data);
-          const pokemonObj = { name: res.data.name, id: res.data.id, url:`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${res.data.id}.gif`}
+          //console.log(res.data);
+          const pokemonObj = { 
+            name: res.data.name, 
+            id: res.data.id, 
+            url:`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${res.data.id}.gif`,
+            types : res.data.types
+          }
           addPokemon(pokemonObj)
         }
       } catch (error) {
