@@ -3,6 +3,7 @@ import Buscador from "./Buscador/Buscador";
 import Details from "./Details/Details";
 import Home from "./Home/Home";
 import { Route, Routes, Navigate } from "react-router-dom";
+import New from "./New/New";
 
 const Main = () => {
 
@@ -13,6 +14,7 @@ const Main = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Pokemon/:id" element={<Details />} />
         <Route path="/search" element={<Buscador />} />
+        <Route path="/new" element={<New />} />
         <Route path="/*" element={<Navigate to={"/"} />} />
       </Routes>
     </div>)
