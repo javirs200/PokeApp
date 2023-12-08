@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios"
 const Search = ({ addPokemon, clearPokemons }) => {
 
   const [pokemon, setPokemon] = useState('')
+  const[firstLoad,setFirstLoad]=useState(true)
 
   const searchPokemon = async () => {
     if (pokemon.length > 0) { // si esta vacio
@@ -52,14 +53,18 @@ const Search = ({ addPokemon, clearPokemons }) => {
   }
 
   useEffect(() => {
-    console.log('set counter 3s');
-    //debounce buscar tras 3 seg
-    const debounce = setTimeout(() => {
-      console.log('trigger search');
-      searchPokemon()
-      document.getElementById('poke').value=''
-    }, 3000)
-    return () => clearTimeout(debounce)
+    if(firstLoad){
+      setFirstLoad(false)
+    }else{
+      console.log('set counter 3s');
+      //debounce buscar tras 3 seg
+      const debounce = setTimeout(() => {
+        console.log('trigger search');
+        searchPokemon()
+        document.getElementById('poke').value=''
+      }, 3000)
+      return () => clearTimeout(debounce)
+    }   
   }, [pokemon])
 
   return (

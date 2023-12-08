@@ -13,7 +13,6 @@ const ListaPokemon = ({ Pokemons }) => {
 
   return (
     <div className='listaPokemon'>
-      <link rel="stylesheet" href="https://justingolden.me/pokemon-types-css/types.min.css"></link>
       {Pokemons ? drawList() : ''}
     </div>
   );
