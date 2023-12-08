@@ -1,5 +1,7 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
 .pokemonCard {
-    width: 30%;
     margin: 5%;
     border-radius: 10px;
     border: solid 5px yellow;

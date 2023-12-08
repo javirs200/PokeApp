@@ -1,0 +1,8 @@
+@import '../utils/variables.scss';
+@import '../utils/mixins.scss';
+
+.principal{
+    @include standard-component;
+    background-color: $black;
+    min-height: 83vh;
+}

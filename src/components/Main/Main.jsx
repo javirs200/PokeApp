@@ -7,7 +7,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 const Main = () => {
 
   return (
-    <main className="principal">
+    <div className="principal">
       <link rel="stylesheet" href="https://justingolden.me/pokemon-types-css/types.min.css"></link>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -15,7 +15,7 @@ const Main = () => {
         <Route path="/search" element={<Buscador />} />
         <Route path="/*" element={<Navigate to={"/"} />} />
       </Routes>
-    </main>)
+    </div>)
 };
 
 export default Main;

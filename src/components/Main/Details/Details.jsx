@@ -38,7 +38,7 @@ const Details = () => {
 
 
   return (
-    <div>
+    <div className="Details">
       <h2>Detalles id:{id}</h2>
       {pkm ?
         <>

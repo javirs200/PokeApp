@@ -4,12 +4,7 @@ import { Adb,Favorite } from '@mui/icons-material'
 const Footer = () => {
   return (<>
       <div className='miFooter'>
-        <BottomNavigation>
-          <BottomNavigationAction icon={<Adb></Adb>}></BottomNavigationAction>
-          <BottomNavigationAction icon={<Adb></Adb>}></BottomNavigationAction>
-          <BottomNavigationAction icon={<Adb></Adb>}></BottomNavigationAction>
-          <BottomNavigationAction icon={<Adb></Adb>}></BottomNavigationAction>
-        </BottomNavigation>
+        <h3>Made by Javi</h3>
       </div>
   </>);
 };
