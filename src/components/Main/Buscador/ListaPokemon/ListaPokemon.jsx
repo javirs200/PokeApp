@@ -10,7 +10,7 @@ const ListaPokemon = () => {
 
 
   const drawList = () => {
-    console.log('pokemons que hay ', Pokemons);
+    // console.log('pokemons que hay ', Pokemons);
     return Pokemons.map((pkm, i) => {
       // console.log('elemento de la lista ' , pkm);
       return <PokeCard key={uuidv4()} pokemon={pkm} />

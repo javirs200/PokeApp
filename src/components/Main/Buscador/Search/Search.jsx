@@ -61,10 +61,10 @@ const Search = () => {
     if(firstLoad){
       setFirstLoad(false)
     }else{
-      console.log('set counter 3s');
+      // console.log('set counter 3s');
       //debounce buscar tras 3 seg
       const debounce = setTimeout(() => {
-        console.log('trigger search');
+        // console.log('trigger search');
         searchPokemon()
         document.getElementById('poke').value=''
       }, 3000)

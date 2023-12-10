@@ -82,7 +82,7 @@ const New = () => {
 
     addPokemon(pokemonObj)
 
-    console.log('pokemon registrado ' ,pokemonObj);
+    // console.log('pokemon registrado ' ,pokemonObj);
       
   }
 
