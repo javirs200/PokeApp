@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import toAsteriscString from '../../../../../utils/formatter'
 
+import Button from '@mui/material/Button';
+
 const PokeCard = ({ pokemon }) => {
 
   return (
@@ -13,7 +15,9 @@ const PokeCard = ({ pokemon }) => {
         <span className={`type ${el.type.name}`} key={el.type.name}></span>
         )}
         </p>
-        <Link className={'link'} to={`/Pokemon/${pokemon.id}`}>Details</Link>
+        <Button variant="contained">
+          <Link className={'link'} to={`/Pokemon/${pokemon.id}`}>Details</Link>
+        </Button>
       </div> : ''}
     </>
 
