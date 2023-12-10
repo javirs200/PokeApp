@@ -2,11 +2,16 @@
 @import '../utils/mixins.scss';
 
 .pokemonCard {
+    width: 60%;
     margin: 5%;
     border-radius: 10px;
     border: solid 5px yellow;
     background: rgb(45, 159, 184);
     background: linear-gradient(162deg, rgba(45, 159, 184, 1) 0%, rgba(129, 136, 86, 1) 30%, rgba(45, 159, 184, 1) 65%, rgba(129, 136, 86, 1) 100%);
+}
+
+.pokemonCard > img {
+    width: 60%;
 }
 
 .link{

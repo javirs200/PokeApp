@@ -1,8 +1,19 @@
-import React from "react";
-import { Link } from 'react-router-dom'
+import React, { useContext } from "react";
+import { Link } from 'react-router-dom';
+import ListaPokemon from "../Buscador/ListaPokemon/ListaPokemon";
+import { PokemonContext } from "../../../context/pokemonContext";
+
 
 const Home = () => {
-  return <Link className={'link'} to='/search'><img src="./pokeball.svg" alt="pokeball"/></Link>
+
+  const { Pokemons } = useContext(PokemonContext)
+
+  return <div className="home">
+    {Pokemons.length > 0 ?
+      <ListaPokemon /> 
+      : <Link className={'link'} to='/search'><img src="./pokeball.svg" alt="pokeball" /></Link>
+    }
+  </div>
 };
 
 export default Home;

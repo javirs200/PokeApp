@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 
 const PokeCard = ({ pokemon }) => {
 
+  // console.log('objeto que llega ', pokemon);
+
   return (
     <>
       {pokemon ? <div className="pokemonCard">
@@ -15,9 +17,11 @@ const PokeCard = ({ pokemon }) => {
         <span className={`type ${el.type.name}`} key={el.type.name}></span>
         )}
         </p>
+        {pokemon.isReal ? 
         <Button variant="contained">
           <Link className={'link'} to={`/Pokemon/${pokemon.id}`}>Details</Link>
-        </Button>
+        </Button> 
+        : ''}
       </div> : ''}
     </>
 

@@ -1,7 +1,11 @@
-import React, { useState,useEffect} from "react";
+import React, { useState,useEffect,useContext} from "react";
 import axios, { AxiosError } from "axios"
+import { PokemonContext } from "../../../../context/pokemonContext";
 
-const Search = ({ addPokemon, clearPokemons }) => {
+const Search = () => {
+ //{ addPokemon, clearPokemons }
+
+  const{addPokemon,clearPokemons} = useContext(PokemonContext)
 
   const [pokemon, setPokemon] = useState('')
   const[firstLoad,setFirstLoad]=useState(true)
@@ -18,7 +22,8 @@ const Search = ({ addPokemon, clearPokemons }) => {
             id: res.data.id,
             //cdn pokemon iconos animados 
             url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${res.data.id}.gif`,
-            types: res.data.types
+            types: res.data.types, //{types[type{name}]}
+            isReal:true
           }
           addPokemon(pokemonObj)
         }
