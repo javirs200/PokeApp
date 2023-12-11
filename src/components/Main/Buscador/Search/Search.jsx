@@ -1,6 +1,8 @@
 import React, { useState,useEffect,useContext} from "react";
 import axios, { AxiosError } from "axios"
 import { PokemonContext } from "../../../../context/pokemonContext";
+import { TextField,Button } from "@mui/material";
+
 
 const Search = () => {
  //{ addPokemon, clearPokemons }
@@ -83,9 +85,10 @@ const Search = () => {
         <input type="text" name="poke" id="poke" placeholder='Pokemon Name' onChange={handleChange} />
         <br />
         <br />
-        <button type="submit">Buscar</button>
+        <Button variant="contained" type="submit">Buscar</Button>
       </form>
-      <button onClick={handleClick} >Despejar</button>
+      <br />
+      <Button variant="contained" onClick={handleClick} >Despejar</Button>
     </>
   );
 };
