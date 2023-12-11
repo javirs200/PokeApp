@@ -3,37 +3,13 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { PokemonContext } from "../../../context/pokemonContext";
 
-/*
- * Los inputs deberán ser del siguiente tipo:
-
-id => number
-name => text
-image => text
-typeOne => select
-typeTwo => select
-Las condiciones de error y validación serán las siguientes:
-
-id => required
-name => required minlenght = 3
-image => required
-typeOne => select required
-typeTwo => select
- * 
- */
-
-/*
-const pokemonObj = {
-            name: res.data.name,
-            id: res.data.id,
-            //cdn pokemon iconos animados 
-            url: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${res.data.id}.gif`,
-            types: res.data.types //{types[type{name}]}
-          }
-*/ 
+import {useNavigate} from "react-router-dom";
 
 const New = () => {
 
   let firstLoad = true;
+
+  const navigateTo = useNavigate();
 
   const {addPokemon} = useContext(PokemonContext)
 
@@ -81,6 +57,10 @@ const New = () => {
     }
 
     addPokemon(pokemonObj)
+
+    alert('pokemon: añadido: '+ pokemonObj.name)
+
+    navigateTo('/home'); // Redirect to home
 
     // console.log('pokemon registrado ' ,pokemonObj);
       
