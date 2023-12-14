@@ -49,7 +49,9 @@ const Search = () => {
     searchPokemon(pokemon)
 
     //clear input and state
-    e.target.poke.value = ''
+
+    // console.log(e.target['standard-basic'].value);
+    e.target['standard-basic'].value = ''
     setPokemon('')
   }
 
@@ -69,8 +71,9 @@ const Search = () => {
       //debounce buscar tras 3 seg
       const debounce = setTimeout(() => {
         // console.log('trigger search');
+        // console.log(document.getElementById('standard-basic').value);
         searchPokemon()
-        document.getElementById('poke').value=''
+        document.getElementById('standard-basic').value=''
       }, 3000)
       return () => clearTimeout(debounce)
     }   
@@ -81,8 +84,9 @@ const Search = () => {
       <h2>Busca Pokemon</h2>
       <br />
       <form onSubmit={handleSubmit}>
-        <label htmlFor='poke'>Nombre o numero del Pokemon :  </label>
-        <input type="text" name="poke" id="poke" placeholder='Pokemon Name' onChange={handleChange} />
+        {/* <label htmlFor='poke'>Nombre o numero del Pokemon :  </label> */}
+        {/* <input type="text" name="poke" id="poke" placeholder='Pokemon Name' onChange={handleChange} /> */}
+        <TextField id="standard-basic" label="Nombre o Número Pokemon" variant="standard" onChange={handleChange} />
         <br />
         <br />
         <Button variant="contained" type="submit">Buscar</Button>

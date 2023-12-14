@@ -5,6 +5,15 @@ import Footer from './components/Footer/Footer'
 import { BrowserRouter } from "react-router-dom";
 import { PokemonContext } from "./context/pokemonContext";
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 function App() {
 
   const [Pokemons,setPokemons] = useState([])
@@ -18,6 +27,8 @@ function App() {
   }
 
   return (
+    <ThemeProvider theme={darkTheme}>
+    <CssBaseline />
     <PokemonContext.Provider value={{Pokemons,addPokemon,clearPokemons}}>
       <BrowserRouter>
         <Header />
@@ -25,6 +36,7 @@ function App() {
       </BrowserRouter>
       <Footer />
     </PokemonContext.Provider>
+    </ThemeProvider>
   )
 }
 
